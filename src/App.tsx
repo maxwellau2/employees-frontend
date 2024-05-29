@@ -1,14 +1,11 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from './store/Store'
-import { Employee, selectEmployees, EmployeeReducer, updateEmployees } from './store/slices/EmployeesSlice'
+import { selectEmployees, EmployeeReducer, updateEmployees } from './store/slices/EmployeesSlice'
 import EmployeeItem from './components/EmployeeItem'
 import "./App.css"
 import Navbar from './components/Navbar'
-import { EmployeesClient } from './utils/EmployeesClient'
 import { useGetAllEmployeesQuery, useGetEmployeeWindowQuery } from './store/EmployeesApi'
-
-const client = new EmployeesClient()
 
 const App = () => {
   // const dispatch = useDispatch()
@@ -31,9 +28,34 @@ const App = () => {
 
   //   fetchEmployees();
   // }, [dispatch]);
-  const { data: employees, error, isLoading } = useGetEmployeeWindowQuery({start:1, windowSize:5});//
+  // const { data: employees, error, isLoading } = useGetEmployeeWindowQuery({start:1, windowSize:5});
+  const employees_state = useSelector(selectEmployees)
+  const dispatch = useDispatch()
+  let { data: employees, error, isLoading, refetch } = useGetAllEmployeesQuery();
+  
+  useEffect(()=>{
+    if (employees){
+      dispatch(updateEmployees(employees))
+    }
+  },[employees,dispatch])
+  
+  useEffect(()=>{
+    refetch();
+  }, [refetch])
+
+  useEffect(() => {
+    const handleFocus = () => {
+      refetch();
+    };
+
+    window.addEventListener('focus', handleFocus);
+    return () => {
+      window.removeEventListener('focus', handleFocus);
+    };
+  }, [refetch]);
+
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.status}</div>;
+  if (error) return <div>Error: {String(error)}</div>;
   console.log(employees)
   return (
     <div className='apply-bg'>

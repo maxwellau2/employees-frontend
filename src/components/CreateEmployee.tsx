@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { Employee } from '../store/types/Employee'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Employee,  } from '../store/types/Employee'
 import "./styles/CreateEmployee.css"
+import { useCreateNewEmployeeMutation } from '../store/EmployeesApi'
 
 interface CreateEmployeeProps {
   employee?: Employee;
@@ -11,10 +12,20 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = ({ employee }) => {
   const [name, setName] = useState(employee?.name || '');
   const [salary, setSalary] = useState(employee?.salary || 0);
   const [department, setDepartment] = useState(employee?.department || '');
-
-  const handleSave = () => {
-      const newEmployee: Employee = { name, salary, department };
-      alert(JSON.stringify(newEmployee, null, 2));
+  let [createNewEmployee] = useCreateNewEmployeeMutation();
+  const navigate = useNavigate(); // useNavigate hook for programmatic navigation
+  const handleSave = async() => {
+      const newEmployee: Employee = {...employee, name, salary, department };
+      let result = await createNewEmployee(newEmployee);
+      if (result.data?.status === "success"){
+        alert("Success!")
+        navigate("/")
+        return;
+      }
+      else{
+        alert(JSON.stringify(result.error))
+        return
+      }
   };
 
   return (

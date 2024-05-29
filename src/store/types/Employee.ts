@@ -9,3 +9,8 @@ export interface EmployeeWindow{
     start: number,
     windowSize: number;
 }
+
+export interface CreateEmployeeResponseTemplate{
+    status: string;
+    data: Employee
+}

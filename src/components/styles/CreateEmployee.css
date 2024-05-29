@@ -50,6 +50,6 @@ button:hover {
     background-color: #0056b3;
 }
 
-h2{
+h2,label{
     color: #030303;
 }

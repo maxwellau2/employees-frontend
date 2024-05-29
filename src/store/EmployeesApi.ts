@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Employee, EmployeeWindow } from './types/Employee';
+import { Employee, EmployeeWindow, CreateEmployeeResponseTemplate } from './types/Employee';
 
 export const employeesApi = createApi({
   reducerPath: 'employeesApi',
@@ -11,7 +11,7 @@ export const employeesApi = createApi({
     getEmployeeById: builder.query<Employee, number>({
       query: (id) => `employee/${id}`,
     }),
-    createNewEmployee: builder.mutation<Employee|null, Employee>({
+    createNewEmployee: builder.mutation<CreateEmployeeResponseTemplate, Employee>({
       query: (employee) => ({
         url: 'employee',
         method: 'POST',
