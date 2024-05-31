@@ -1,22 +1,25 @@
 import React from 'react';
 import './styles//Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // interface NavbarProps {
 //     onFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 //     onCreateEmployee: () => void;
 // }
 
-function onFilterChange(){
-    return;
-}
-
-function onCreateEmployee(){
-    // alert("ur mom")
-    return ;
-}
 
 const Navbar = () => {
+    
+    const navigate = useNavigate();
+    function onFilterChange(){
+        return;
+    }
+    
+    function onCreateEmployee(){
+        // alert("ur mom")
+        navigate("/CreateNewEmployee", {state:{id:null, name:"", salary:0, department:""}})
+        return ;
+    }
     return (
         <nav className="navbar">
             <h1 className="navbar-title">Employee Management</h1>
@@ -26,9 +29,7 @@ const Navbar = () => {
                 placeholder="Filter employees..." 
                 onChange={onFilterChange} 
             />
-            <Link to={'/CreateNewEmployee'}>
-                <button className="navbar-button" onClick={onCreateEmployee}>Create Employee</button>
-            </Link>
+            <button className="navbar-button" onClick={onCreateEmployee}>Create Employee</button>
         </nav>
     );
 }

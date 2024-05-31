@@ -6,11 +6,16 @@ export interface Employee{
 }
 
 export interface EmployeeWindow{
-    start: number,
+    pageNumber: number,
     windowSize: number;
 }
 
 export interface CreateEmployeeResponseTemplate{
     status: string;
     data: Employee
+}
+
+export interface EmployeeWindowReturn{
+    totalEmployees: number,
+    employees: Employee[]
 }
