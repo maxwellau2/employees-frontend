@@ -46,10 +46,26 @@ button {
     transition: background-color 0.2s;
 }
 
+.apply-red{
+    background-color: rgb(236, 46, 46);
+}
+
+.apply-red:hover{
+    background-color: rgb(229, 102, 102);
+}
+
 button:hover {
     background-color: #0056b3;
 }
 
 h2,label{
     color: #030303;
+}
+
+select{
+    width: 80%;
+    text-align: center;
+    padding: 5px;
+    background-color: #030303;
+    border-radius: 5px;
 }

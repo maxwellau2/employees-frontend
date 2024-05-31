@@ -19,7 +19,6 @@ export const employeesApi = createApi({
         url: 'employee',
         method: 'POST',
         body: employee,
-        providesTags: ['Employees']
       }), invalidatesTags:["Employees"],
     }),
     modifyEmployee: builder.mutation<CreateEmployeeResponseTemplate, Employee>({
@@ -27,14 +26,12 @@ export const employeesApi = createApi({
         url: `employee/${employee.id}`,
         method: 'PUT',
         body: {name:employee.name, department:employee.department, salary:employee.salary},
-        providesTags: ['Employees']
       }),invalidatesTags:["Employees"],
     }),
     deleteEmployee: builder.mutation<Employee|null, number>({
       query: (id) => ({
         url: `employee/${id}`,
         method: 'DELETE',
-        providesTags: ['Employees']
       }),invalidatesTags:["Employees"],
     }),
     getEmployeeWindow: builder.query<EmployeeWindowReturn, EmployeeWindow>({
@@ -42,8 +39,7 @@ export const employeesApi = createApi({
         url: 'employees',
         method: 'GET',
         params: { pageNumber, windowSize },
-        providesTags: ['Employees']
-      }),
+      }), providesTags: ['Employees']
     }),
   }),
 });

@@ -5,10 +5,11 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 16px;
-    margin: 16px;
+    margin: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #f9f9f9;
     transition: transform 0.2s, box-shadow 0.2s;
+    width: 400px;
 }
 
 .employee-card:hover {

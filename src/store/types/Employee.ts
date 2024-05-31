@@ -17,5 +17,5 @@ export interface CreateEmployeeResponseTemplate{
 
 export interface EmployeeWindowReturn{
     totalEmployees: number,
-    employees: Employee[]
+    employees: Employee[],
 }
