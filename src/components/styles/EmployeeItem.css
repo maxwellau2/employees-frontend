@@ -1,13 +1,14 @@
 .employee-card {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
+    border-radius: 2px;
+    padding: 15px;
     margin: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+    background-color: #e6e2e2;
     transition: transform 0.2s, box-shadow 0.2s;
     width: 400px;
 }
@@ -19,6 +20,10 @@
 
 .employee-details {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    /* justify-items: flex-start; */
 }
 
 .employee-name {
@@ -30,7 +35,7 @@
 .employee-department {
     font-size: 1.2em;
     color: #555;
-    margin: 8px 0;
+    margin: 0;
 }
 
 .employee-salary {
@@ -38,14 +43,18 @@
     color: #888;
 }
 
+.employee-name, .employee-salary, .employee-department{
+    color: #1c4572;
+}
+
 .employee-actions {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 8px;
 }
 
-.edit-button,
-.delete-button {
+/* .edit-button, */
+/* .delete-button {
     background-color: #007bff;
     border: none;
     color: white;
@@ -58,7 +67,7 @@
     cursor: pointer;
     border-radius: 4px;
     transition: background-color 0.2s;
-}
+} */
 
 .edit-button:hover {
     background-color: #0056b3;

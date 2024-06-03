@@ -1,6 +1,8 @@
 import React from 'react';
 import './styles//Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
+import AddIcon from '@mui/icons-material/Add';
+import { Button, IconButton } from '@mui/material';
 
 // interface NavbarProps {
 //     onFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -30,6 +32,12 @@ const Navbar = () => {
                 onChange={onFilterChange} 
             />
             <button className="navbar-button" onClick={onCreateEmployee}>Create Employee</button>
+            <Button variant="contained" startIcon={<AddIcon/>} sx={{backgroundColor:"green"}}>
+                Create Employee
+            </Button>
+            <IconButton style={{color:"blue", backgroundColor:"white"}}>
+                <AddIcon/>
+            </IconButton>
         </nav>
     );
 }

@@ -9,7 +9,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const EmployeeItem = ({employee}: {employee : Employee}) => {
     const [open, setOpen] = React.useState(false);
@@ -62,8 +64,14 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
                 <p className="employee-salary">${employee.salary.toLocaleString()}</p>
             </div>
             <div className="employee-actions">
-                <button className="edit-button" onClick={() => onEdit(employee)}>Edit</button>
-                <button className="delete-button" onClick={() => onDelete()}>Delete</button>
+                {/* {edit icon button} */}
+                <IconButton aria-label="edit" color='warning'onClick={() => onEdit(employee)}>
+                    <EditIcon/>
+                </IconButton>
+                {/* {edit icon button} */}
+                <IconButton aria-label="delete" color='error' onClick={() => onDelete()}>
+                    <DeleteIcon/>
+                </IconButton>
             </div>
             { open && <Dialog open={open} onClose={handleClose}>
                 <DialogTitle> {"Delete Employee?"} </DialogTitle>
