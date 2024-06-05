@@ -1,4 +1,4 @@
-import EmployeeItem from './components/EmployeeItem'
+import EmployeeItem from './components/EmployeeCard'
 import "./App.css"
 import Navbar from './components/Navbar'
 import { useGetEmployeeWindowQuery } from './store/slices/EmployeesApi'

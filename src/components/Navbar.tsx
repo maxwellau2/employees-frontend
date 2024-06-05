@@ -1,7 +1,7 @@
 import './styles//Navbar.css';
 import { useNavigate } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add';
-import { Button, Input, Stack, Typography } from '@mui/material';
+import { Button, Stack, Typography } from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 // interface NavbarProps {
 //     onFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -35,8 +35,8 @@ const Navbar = () => {
             /> */}
 
             {/* create employee btn */}
-            
-            <Button variant="contained" onClick={onCreateEmployee} startIcon={<AddIcon/>} sx={{backgroundColor:"green"}}>
+
+            <Button variant="contained" onClick={onCreateEmployee} startIcon={<AddCircleOutlineIcon/>} sx={{backgroundColor:"green"}}>
                 Create Employee
             </Button>
         </Stack>
