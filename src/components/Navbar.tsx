@@ -21,8 +21,9 @@ const Navbar = () => {
         return ;
     }
     return (
-        <Stack direction={"row"} className="navbar">
+        <Stack direction={"row"} className="navbar"> {/* top blue bar, row stack */}
             <Typography variant='h4' className="navbar-title">Employee Management</Typography>
+            {/* filtering employees */}
             <Input 
                 sx={{backgroundColor: "white", width: "400px"}}
                 type="text" 
@@ -30,13 +31,10 @@ const Navbar = () => {
                 placeholder="Filter employees..." 
                 onChange={onFilterChange} 
             />
-            {/* <button className="navbar-button" onClick={onCreateEmployee}>Create Employee</button> */}
+            {/* create employee btn */}
             <Button variant="contained" onClick={onCreateEmployee} startIcon={<AddIcon/>} sx={{backgroundColor:"green"}}>
                 Create Employee
             </Button>
-            {/* <IconButton style={{color:"blue", backgroundColor:"white"}}>
-                <AddIcon/>
-            </IconButton> */}
         </Stack>
     );
 }

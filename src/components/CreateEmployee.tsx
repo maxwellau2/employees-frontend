@@ -84,10 +84,12 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
 
   return (
       <Box className="create-employee">
+          {/* navigate back button */}
           <Button variant="contained" onClick={()=>navigate("/")} sx={{backgroundColor:"red"}}> Go Back </Button>
-          {/* <button className='apply-red' onClick={()=>navigate("/")}>Go Back</button> */}
           <Typography sx={{color:"#030303", fontSize:"1.5em", fontWeight:"bold"}}>Create Employee</Typography>
+          {/* form start */}
           <FormControl onSubmit={(e) => e.preventDefault()}>
+              {/* Name input */}
               <Box className="form-group">
                   <Typography sx={{color:"#030303", fontWeight:"bold"}}>Name:</Typography>
                   <Input 
@@ -95,8 +97,8 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                   />
-                  {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' fullWidth sx={{height:"20px", padding:"0px"}}/> */}
               </Box>
+              {/* Salary Input */}
               <Box className="form-group">
                   <Typography sx={{color:"#030303", fontWeight:"bold"}}>Salary:</Typography>
                   <Input 
@@ -105,23 +107,19 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                       onChange={(e) => setSalary(Number(e.target.value))}
                   />
               </Box>
+              {/* Department Input */}
               <Box className="form-group">
                   <Typography sx={{color:"#030303", fontWeight:"bold"}}>Department:</Typography>
                   <Select fullWidth name="department" value={department} onChange={(e)=>setDepartment(e.target.value)}>
-                    {/* <option value=""></option>
-                    <option value="HR">HR</option>
-                    <option value="PS">PS</option> */}
                     <MenuItem value={""}></MenuItem>
                     <MenuItem value={"HR"}>HR</MenuItem>
                     <MenuItem value={"PS"}>PS</MenuItem>
                   </Select>
               </Box>
+              {/* Submission */}
               <Button variant="contained" onClick={handleSave} sx={{backgroundColor:"green"}}>
                 Save
               </Button>
-              {/* <button type="button" onClick={handleSave}>
-                  Save
-              </button> */}
           </FormControl>
       </Box>
   );

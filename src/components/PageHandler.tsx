@@ -24,7 +24,9 @@ const PageHandler = (props:PageHandlerInterface) => {
 
   return (
     <Box className='apply-flex'>
+        {/* Display page number and number of employees */}
         <Typography margin={"auto 0 auto 0"}>Showing <strong>{props.start}</strong> - <strong>{props.end}</strong> out of <strong>{props.totalEntries}</strong> entries</Typography>
+        {/* Previous and Next Buttons */}
         <Box className='apply-flex'>
             <Button sx={{color:"blue",'&:hover': {textDecoration:"underline"}}} disabled={isFirstPage} onClick={dereasePageState}>Previous</Button>
             <Typography margin={"auto 0 auto 0"}><strong>{props.pageNumber}</strong></Typography>

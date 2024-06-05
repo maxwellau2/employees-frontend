@@ -47,12 +47,15 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
         return;
     }
     return (
-        <Box className="employee-card">
+        <Box className="employee-card"> {/* flex row */}
+            {/* Employee Details, LHS of card */}
             <Box className="employee-details">
                 <Typography sx={{fontSize: "1.5em", fontWeight: "bold", color:"1c4572"}} className="employee-name">{employee.name}</Typography>
                 <Typography sx={{fontSize: "1.2em", margin:0, color:"#1c4572"}} >{employee.department}</Typography >
                 <Typography sx={{fontSize: "1em", color:"#1c4572"}}>${employee.salary.toLocaleString()}</Typography>
             </Box>
+            
+            {/* Action buttons */}
             <Box className="employee-actions">
                 {/* {edit icon button} */}
                 <IconButton aria-label="edit" color='warning'onClick={() => onEdit(employee)}>
