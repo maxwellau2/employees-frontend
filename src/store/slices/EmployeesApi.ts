@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Employee, EmployeeWindow, CreateEmployeeResponseTemplate, EmployeeWindowReturn } from './types/Employee';
+import { Employee, EmployeeWindow, CreateEmployeeResponseTemplate, EmployeeWindowReturn } from '../types/Employee';
 
 export const employeesApi = createApi({
   reducerPath: 'employeesApi',

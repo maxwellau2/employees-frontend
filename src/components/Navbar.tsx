@@ -12,9 +12,9 @@ import { Button, Input, Stack, Typography } from '@mui/material';
 const Navbar = () => {
     
     const navigate = useNavigate();
-    function onFilterChange(){
-        return;
-    }
+    // function onFilterChange(){
+    //     return;
+    // }
     
     function onCreateEmployee(){
         navigate("/CreateNewEmployee", {state:{id:null, name:"", salary:0, department:""}})
@@ -22,16 +22,20 @@ const Navbar = () => {
     }
     return (
         <Stack direction={"row"} className="navbar"> {/* top blue bar, row stack */}
-            <Typography variant='h4' className="navbar-title">Employee Management</Typography>
+            <Typography variant='h4' sx={{"fontWeight" : "bold"}} className="navbar-title">Employees</Typography>
+
             {/* filtering employees */}
-            <Input 
+
+            {/* <Input 
                 sx={{backgroundColor: "white", width: "400px"}}
                 type="text" 
                 className="navbar-input" 
                 placeholder="Filter employees..." 
                 onChange={onFilterChange} 
-            />
+            /> */}
+
             {/* create employee btn */}
+            
             <Button variant="contained" onClick={onCreateEmployee} startIcon={<AddIcon/>} sx={{backgroundColor:"green"}}>
                 Create Employee
             </Button>

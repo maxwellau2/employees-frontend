@@ -2,7 +2,7 @@ import React from 'react'
 import { Employee } from '../store/types/Employee'
 import "./styles/EmployeeItem.css";
 import { useNavigate } from 'react-router-dom';
-import { useDeleteEmployeeMutation } from '../store/EmployeesApi';
+import { useDeleteEmployeeMutation } from '../store/slices/EmployeesApi';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
@@ -24,7 +24,9 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
     const handleClose = () => {
         setOpen(false);
     };
+
     const [deleteEmployee] = useDeleteEmployeeMutation()
+    
     const navigate = useNavigate()
     const onEdit = (employee:Employee) =>{
         navigate("/CreateNewEmployee", {state: employee})
@@ -46,6 +48,7 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
         handleClose();
         return;
     }
+
     return (
         <Box className="employee-card"> {/* flex row */}
             {/* Employee Details, LHS of card */}
@@ -54,7 +57,7 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
                 <Typography sx={{fontSize: "1.2em", margin:0, color:"#1c4572"}} >{employee.department}</Typography >
                 <Typography sx={{fontSize: "1em", color:"#1c4572"}}>${employee.salary.toLocaleString()}</Typography>
             </Box>
-            
+
             {/* Action buttons */}
             <Box className="employee-actions">
                 {/* {edit icon button} */}

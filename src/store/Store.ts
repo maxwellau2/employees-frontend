@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { employeesApi } from "./EmployeesApi";
+import { employeesApi } from "./slices/EmployeesApi";
 import { EmployeeReducer } from "./slices/EmployeesSlice";
 
 export const store = configureStore({

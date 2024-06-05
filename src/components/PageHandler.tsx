@@ -11,15 +11,20 @@ interface PageHandlerInterface{
 }
 
 const PageHandler = (props:PageHandlerInterface) => {
+
+  const [pageState, setPageState] = props.state
+
   const increasePageState = () =>{
-    props.state[1](props.state[0] + 1);
+    setPageState(pageState + 1);
     console.log(props.end, props.totalEntries)
   }
+
   const dereasePageState = () =>{
     console.log(props.end, props.totalEntries)
-    props.state[1](props.state[0] - 1);
+    setPageState(pageState - 1);
   }
-  const isFirstPage = (props.state[0] === 0)
+
+  const isFirstPage = (pageState === 0)
   const isLastPage = (props.end === props.totalEntries)
 
   return (

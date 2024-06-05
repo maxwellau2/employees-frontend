@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Employee,  } from '../store/types/Employee'
 import "./styles/CreateEmployee.css"
-import { useCreateNewEmployeeMutation, useModifyEmployeeMutation } from '../store/EmployeesApi'
+import { useCreateNewEmployeeMutation, useModifyEmployeeMutation } from '../store/slices/EmployeesApi'
 import { Box, Button, FormControl, Input, MenuItem, Select, Typography } from '@mui/material'
 
 interface CreateEmployeeProps {
@@ -80,7 +80,10 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
           return
         }
       }
-  };
+    };
+
+    const menuItems = ["", "HR", "PS"]
+
 
   return (
       <Box className="create-employee">
@@ -111,9 +114,10 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
               <Box className="form-group">
                   <Typography sx={{color:"#030303", fontWeight:"bold"}}>Department:</Typography>
                   <Select fullWidth name="department" value={department} onChange={(e)=>setDepartment(e.target.value)}>
-                    <MenuItem value={""}></MenuItem>
+                    {/* <MenuItem value={""}></MenuItem>
                     <MenuItem value={"HR"}>HR</MenuItem>
-                    <MenuItem value={"PS"}>PS</MenuItem>
+                    <MenuItem value={"PS"}>PS</MenuItem> */}
+                    {menuItems.map((item, idx)=> <MenuItem key={idx} value={item}>{item}</MenuItem>)}
                   </Select>
               </Box>
               {/* Submission */}

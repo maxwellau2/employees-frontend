@@ -4,7 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import { store } from './store/Store'
 import { Provider } from 'react-redux'
-import CreateEmployee from './components/CreateEmployee.tsx'
+import CreateEmployee from './components/EmployeeCreationPage.tsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
