@@ -1,8 +1,7 @@
-import React from 'react';
 import './styles//Navbar.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
-import { Button, IconButton } from '@mui/material';
+import { Button, Input, Stack, Typography } from '@mui/material';
 
 // interface NavbarProps {
 //     onFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -18,27 +17,27 @@ const Navbar = () => {
     }
     
     function onCreateEmployee(){
-        // alert("ur mom")
         navigate("/CreateNewEmployee", {state:{id:null, name:"", salary:0, department:""}})
         return ;
     }
     return (
-        <nav className="navbar">
-            <h1 className="navbar-title">Employee Management</h1>
-            <input 
+        <Stack direction={"row"} className="navbar">
+            <Typography variant='h4' className="navbar-title">Employee Management</Typography>
+            <Input 
+                sx={{backgroundColor: "white", width: "400px"}}
                 type="text" 
                 className="navbar-input" 
                 placeholder="Filter employees..." 
                 onChange={onFilterChange} 
             />
-            <button className="navbar-button" onClick={onCreateEmployee}>Create Employee</button>
-            <Button variant="contained" startIcon={<AddIcon/>} sx={{backgroundColor:"green"}}>
+            {/* <button className="navbar-button" onClick={onCreateEmployee}>Create Employee</button> */}
+            <Button variant="contained" onClick={onCreateEmployee} startIcon={<AddIcon/>} sx={{backgroundColor:"green"}}>
                 Create Employee
             </Button>
-            <IconButton style={{color:"blue", backgroundColor:"white"}}>
+            {/* <IconButton style={{color:"blue", backgroundColor:"white"}}>
                 <AddIcon/>
-            </IconButton>
-        </nav>
+            </IconButton> */}
+        </Stack>
     );
 }
 

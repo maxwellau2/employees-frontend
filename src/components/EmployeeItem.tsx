@@ -12,6 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { Box, Typography } from '@mui/material';
 
 const EmployeeItem = ({employee}: {employee : Employee}) => {
     const [open, setOpen] = React.useState(false);
@@ -26,23 +27,12 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
     const [deleteEmployee] = useDeleteEmployeeMutation()
     const navigate = useNavigate()
     const onEdit = (employee:Employee) =>{
-        // alert("penis1")
         navigate("/CreateNewEmployee", {state: employee})
         return
     }
     
     const onDelete = () =>{
-        // AlertDialog();
         handleClickOpen();
-        // if(confirm("Are you sure you want to delete?")){
-        //     if (employee.id !== undefined){
-        //         deleteEmployee(employee.id)
-        //         alert("deleted")
-        //         return;
-        //         }
-        //    alert("id is undefined")
-        // }
-        // alert("aborted")
         return
     }
 
@@ -57,13 +47,13 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
         return;
     }
     return (
-        <div className="employee-card">
-            <div className="employee-details">
-                <h2 className="employee-name">{employee.name}</h2>
-                <p className="employee-department">{employee.department}</p>
-                <p className="employee-salary">${employee.salary.toLocaleString()}</p>
-            </div>
-            <div className="employee-actions">
+        <Box className="employee-card">
+            <Box className="employee-details">
+                <Typography sx={{fontSize: "1.5em", fontWeight: "bold", color:"1c4572"}} className="employee-name">{employee.name}</Typography>
+                <Typography sx={{fontSize: "1.2em", margin:0, color:"#1c4572"}} >{employee.department}</Typography >
+                <Typography sx={{fontSize: "1em", color:"#1c4572"}}>${employee.salary.toLocaleString()}</Typography>
+            </Box>
+            <Box className="employee-actions">
                 {/* {edit icon button} */}
                 <IconButton aria-label="edit" color='warning'onClick={() => onEdit(employee)}>
                     <EditIcon/>
@@ -72,7 +62,9 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
                 <IconButton aria-label="delete" color='error' onClick={() => onDelete()}>
                     <DeleteIcon/>
                 </IconButton>
-            </div>
+            </Box>
+
+            {/* Dialog Opening */}
             { open && <Dialog open={open} onClose={handleClose}>
                 <DialogTitle> {"Delete Employee?"} </DialogTitle>
                 <DialogContent>
@@ -85,7 +77,7 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
                     <Button onClick={() => confirmDeleteEmployee(employee)} autoFocus>Yes</Button>
                 </DialogActions>
             </Dialog>}
-        </div>
+        </Box>
     );
   }
 

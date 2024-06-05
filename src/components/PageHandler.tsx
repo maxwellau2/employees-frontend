@@ -1,5 +1,6 @@
 import React from 'react'
 import "./styles/PageHandler.css"
+import { Box, Button, Typography } from '@mui/material';
 
 interface PageHandlerInterface{
     start: number|undefined;
@@ -20,15 +21,16 @@ const PageHandler = (props:PageHandlerInterface) => {
   }
   const isFirstPage = (props.state[0] === 0)
   const isLastPage = (props.end === props.totalEntries)
+
   return (
-    <div className='apply-flex'>
-        <p>Showing <strong>{props.start}</strong> - <strong>{props.end}</strong> out of <strong>{props.totalEntries}</strong> entries</p>
-        <div className='apply-flex'>
-            <button disabled={isFirstPage} onClick={dereasePageState}>Previous</button>
-            <p><strong>{props.pageNumber}</strong></p>
-            <button  disabled={isLastPage} onClick={increasePageState}>Next</button>
-        </div>
-    </div>
+    <Box className='apply-flex'>
+        <Typography margin={"auto 0 auto 0"}>Showing <strong>{props.start}</strong> - <strong>{props.end}</strong> out of <strong>{props.totalEntries}</strong> entries</Typography>
+        <Box className='apply-flex'>
+            <Button sx={{color:"blue",'&:hover': {textDecoration:"underline"}}} disabled={isFirstPage} onClick={dereasePageState}>Previous</Button>
+            <Typography margin={"auto 0 auto 0"}><strong>{props.pageNumber}</strong></Typography>
+            <Button sx={{color:"blue",'&:hover': {textDecoration:"underline"}}} disabled={isLastPage} onClick={increasePageState}>Next</Button>
+        </Box>
+    </Box>
   )
 }
 

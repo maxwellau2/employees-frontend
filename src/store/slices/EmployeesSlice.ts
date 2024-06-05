@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../Store";
 import { Employee } from "../types/Employee";
-import { EmployeesClient } from "../../utils/EmployeesClient";
 
 
 export interface EmployeesState{

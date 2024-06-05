@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Employee,  } from '../store/types/Employee'
 import "./styles/CreateEmployee.css"
 import { useCreateNewEmployeeMutation, useModifyEmployeeMutation } from '../store/EmployeesApi'
+import { Box, Button, FormControl, Input, MenuItem, Select, Typography } from '@mui/material'
 
 interface CreateEmployeeProps {
   employee?: Employee;
 }
 
 
-const CreateEmployee: React.FC<CreateEmployeeProps> = ({ employee }) => {
+const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
   function validateInput(employee:Employee): number{
     if (employee.name.length < 4){
       alert("characters need to be min 4 characters")
@@ -29,6 +30,8 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = ({ employee }) => {
     }
     return 1;
   }
+
+  // use location hook sees where it has navigated from, then reads the state fed into it
   const {state} = useLocation();
   const {name : n, salary : s, department : d } = state;
   let id = null;
@@ -43,7 +46,9 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = ({ employee }) => {
 
   let [createNewEmployee] = useCreateNewEmployeeMutation();
   let [modifyEmployee] = useModifyEmployeeMutation();
-  const navigate = useNavigate(); // useNavigate hook for programmatic navigation
+  const navigate = useNavigate(); // useNavigate hook for navigation
+
+
   const handleSave = async() => {
       const newEmployee: Employee = {name:name, salary:salary, department:department };
       console.log(department)
@@ -78,39 +83,47 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = ({ employee }) => {
   };
 
   return (
-      <div className="create-employee">
-          <button className='apply-red' onClick={()=>navigate("/")}>Go Back</button>
-          <h2>Create Employee</h2>
-          <form onSubmit={(e) => e.preventDefault()}>
-              <div className="form-group">
-                  <label>Name:</label>
-                  <input
+      <Box className="create-employee">
+          <Button variant="contained" onClick={()=>navigate("/")} sx={{backgroundColor:"red"}}> Go Back </Button>
+          {/* <button className='apply-red' onClick={()=>navigate("/")}>Go Back</button> */}
+          <Typography sx={{color:"#030303", fontSize:"1.5em", fontWeight:"bold"}}>Create Employee</Typography>
+          <FormControl onSubmit={(e) => e.preventDefault()}>
+              <Box className="form-group">
+                  <Typography sx={{color:"#030303", fontWeight:"bold"}}>Name:</Typography>
+                  <Input 
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                   />
-              </div>
-              <div className="form-group">
-                  <label>Salary:</label>
-                  <input
+                  {/* <TextField id="outlined-basic" label="Outlined" variant="outlined" size='small' fullWidth sx={{height:"20px", padding:"0px"}}/> */}
+              </Box>
+              <Box className="form-group">
+                  <Typography sx={{color:"#030303", fontWeight:"bold"}}>Salary:</Typography>
+                  <Input 
                       type="number"
                       value={salary}
                       onChange={(e) => setSalary(Number(e.target.value))}
                   />
-              </div>
-              <div className="form-group">
-                  <label>Department:</label>
-                  <select name="department" value={department} onChange={(e)=>setDepartment(e.target.value)}>
-                    <option value=""></option>
+              </Box>
+              <Box className="form-group">
+                  <Typography sx={{color:"#030303", fontWeight:"bold"}}>Department:</Typography>
+                  <Select fullWidth name="department" value={department} onChange={(e)=>setDepartment(e.target.value)}>
+                    {/* <option value=""></option>
                     <option value="HR">HR</option>
-                    <option value="PS">PS</option>
-                  </select>
-              </div>
-              <button type="button" onClick={handleSave}>
+                    <option value="PS">PS</option> */}
+                    <MenuItem value={""}></MenuItem>
+                    <MenuItem value={"HR"}>HR</MenuItem>
+                    <MenuItem value={"PS"}>PS</MenuItem>
+                  </Select>
+              </Box>
+              <Button variant="contained" onClick={handleSave} sx={{backgroundColor:"green"}}>
+                Save
+              </Button>
+              {/* <button type="button" onClick={handleSave}>
                   Save
-              </button>
-          </form>
-      </div>
+              </button> */}
+          </FormControl>
+      </Box>
   );
 };
 
