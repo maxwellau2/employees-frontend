@@ -18,7 +18,7 @@ const Navbar = () => {
     // function onFilterChange(){
     //     return;
     // }
-    const { height, width } = useWindowDimensions();
+    const { width } = useWindowDimensions();
     const isMobileView: boolean = (width<600)
     
     function onCreateEmployee(){

@@ -13,7 +13,7 @@ interface PageHandlerInterface{
 
 const PageHandler = (props:PageHandlerInterface) => {
 
-  const {width, height} = useWindowDimensions()
+  const {width} = useWindowDimensions()
   const isMobileView: boolean = (width<600)
 
 

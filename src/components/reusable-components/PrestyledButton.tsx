@@ -1,5 +1,4 @@
 import { Button, SxProps, Theme } from '@mui/material';
-import useWindowDimensions from '../custom-hooks/GetWindowDimesions';
 
 interface ButtonProps {
     onClick: (() => Promise<void>) | (() => void),
@@ -10,6 +9,7 @@ interface ButtonProps {
 const PrestyledButton = (props: ButtonProps) => {
     const { onClick, text, sx } = props;
 
+    // for async calls, use this handler
     const handleClick = async () => {
         if (typeof onClick === 'function') {
             try {
