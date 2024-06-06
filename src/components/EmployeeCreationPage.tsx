@@ -4,7 +4,7 @@ import { Employee,  } from '../store/types/Employee'
 import "./styles/CreateEmployee.css"
 import { useCreateNewEmployeeMutation, useModifyEmployeeMutation } from '../store/slices/EmployeesApi'
 import { Box, Button, FormControl, Input, MenuItem, Select, TextField, Typography } from '@mui/material'
-import PrestyledButton from './PrestyledButton'
+import PrestyledButton from './reusable-components/PrestyledButton'
 
 interface CreateEmployeeProps {
   employee?: Employee;

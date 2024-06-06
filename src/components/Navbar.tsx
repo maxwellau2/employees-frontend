@@ -2,6 +2,7 @@ import './styles//Navbar.css';
 import { useNavigate } from 'react-router-dom';
 import { Button, Stack, Typography } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import IconButton from './reusable-components/IconButton';
 
 // interface NavbarProps {
 //     onFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -35,10 +36,7 @@ const Navbar = () => {
             /> */}
 
             {/* create employee btn */}
-
-            <Button variant="contained" onClick={onCreateEmployee} startIcon={<AddCircleOutlineIcon/>} sx={{backgroundColor:"green"}}>
-                Create Employee
-            </Button>
+            <IconButton icon={<AddCircleOutlineIcon/>} text='Create Employee' onClick={onCreateEmployee}/>
         </Stack>
     );
 }
