@@ -1,14 +1,23 @@
-import { Button, SxProps, Theme } from '@mui/material';
+import { Button, SxProps, Theme, IconButton } from '@mui/material';
 import React from 'react';
+import useWindowDimensions from '../custom-hooks/GetWindowDimesions';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-interface IconButtonProps {
+interface CustomIconButtonProps {
     onClick: (() => Promise<void>) | (() => void),
     text: string,
     sx?: SxProps<Theme>,
     icon: React.ReactNode
 }
 
-const IconButton = (props: IconButtonProps) => {
+
+
+const CustomIconButton = (props: CustomIconButtonProps) => {
+
+    const { height, width } = useWindowDimensions();
+    console.log(height, width)
+
+    const isMobileView: boolean = (width<600)
     const { onClick, text, sx, icon } = props;
 
     const handleClick = async () => {
@@ -21,6 +30,13 @@ const IconButton = (props: IconButtonProps) => {
         }
     };
 
+    if (isMobileView)
+        return (
+            <IconButton onClick={handleClick}>
+                {icon}
+            </IconButton>)
+
+
     return (
         <Button variant="contained" onClick={handleClick} startIcon={icon} sx={sx||{backgroundColor:"green"}}>
                 {text}
@@ -28,4 +44,4 @@ const IconButton = (props: IconButtonProps) => {
     );
 };
 
-export default IconButton;
+export default CustomIconButton;

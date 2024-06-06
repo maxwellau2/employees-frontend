@@ -1,4 +1,5 @@
 import { Button, SxProps, Theme } from '@mui/material';
+import useWindowDimensions from '../custom-hooks/GetWindowDimesions';
 
 interface ButtonProps {
     onClick: (() => Promise<void>) | (() => void),
@@ -18,12 +19,11 @@ const PrestyledButton = (props: ButtonProps) => {
             }
         }
     };
-
     return (
         <Button variant="contained" onClick={handleClick} sx={sx || { backgroundColor: "green" }}>
-            {text}
+                {text}
         </Button>
-    );
+    )
 };
 
 export default PrestyledButton;

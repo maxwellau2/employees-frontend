@@ -2,7 +2,9 @@ import './styles//Navbar.css';
 import { useNavigate } from 'react-router-dom';
 import { Stack, Typography } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import IconButton from './reusable-components/IconButton';
+import IconButton from './reusable-components/CustomIconButton';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import useWindowDimensions from './custom-hooks/GetWindowDimesions';
 
 // interface NavbarProps {
 //     onFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -16,6 +18,8 @@ const Navbar = () => {
     // function onFilterChange(){
     //     return;
     // }
+    const { height, width } = useWindowDimensions();
+    const isMobileView: boolean = (width<600)
     
     function onCreateEmployee(){
         navigate("/CreateNewEmployee", {state:{id:null, name:"", salary:0, department:""}})
@@ -36,7 +40,8 @@ const Navbar = () => {
             /> */}
 
             {/* create employee btn */}
-            <IconButton icon={<AddCircleOutlineIcon/>} text='Create Employee' onClick={onCreateEmployee}/>
+
+            <IconButton icon={ isMobileView? <AddCircleIcon sx={{ color: "#f0f0f0" }}/> :<AddCircleOutlineIcon/>} text='Create Employee' onClick={onCreateEmployee}/>
         </Stack>
     );
 }
