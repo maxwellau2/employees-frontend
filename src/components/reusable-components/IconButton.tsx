@@ -1,5 +1,4 @@
-import { Button, SvgIconTypeMap, SxProps, Theme } from '@mui/material';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
+import { Button, SxProps, Theme } from '@mui/material';
 import React from 'react';
 
 interface IconButtonProps {

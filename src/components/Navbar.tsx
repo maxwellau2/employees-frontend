@@ -1,6 +1,6 @@
 import './styles//Navbar.css';
 import { useNavigate } from 'react-router-dom';
-import { Button, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import IconButton from './reusable-components/IconButton';
 
