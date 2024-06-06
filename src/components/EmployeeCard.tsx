@@ -53,7 +53,7 @@ const EmployeeItem = ({employee}: {employee : Employee}) => {
         <Box className="employee-card"> {/* flex row */}
             {/* Employee Details, LHS of card */}
             <Box className="employee-details">
-                <Typography sx={{fontSize: "1.5em", fontWeight: "bold", color:"1c4572"}} className="employee-name">{employee.name}</Typography>
+                <Typography sx={{fontSize: "1.5em", fontWeight: "bold", color:"1c4572", textAlign:"left"}} className="employee-name">{employee.name}</Typography>
                 <Typography sx={{fontSize: "1.2em", margin:0, color:"#1c4572"}} >{employee.department}</Typography >
                 <Typography sx={{fontSize: "1em", color:"#1c4572"}}>${employee.salary.toLocaleString()}</Typography>
             </Box>
