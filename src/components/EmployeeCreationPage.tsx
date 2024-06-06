@@ -89,8 +89,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
   return (
       <Box className="create-employee">
           {/* navigate back button */}
-          {/* <PrestyledButton text='Go Back' onClick={()=>{navigate("/")}} sx={{backgroundColor:"red"}}/> */}
-          <Button variant="contained" onClick={()=>navigate("/")} sx={{backgroundColor:"red"}}> Go Back </Button>
+          <PrestyledButton text='GO BACK' onClick={()=>navigate("/")} sx={{backgroundColor:"red"}}/>
           <Typography sx={{color:"#030303", fontSize:"1.5em", fontWeight:"bold"}}>Create Employee</Typography>
 
           {/* form start */}
@@ -120,16 +119,11 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
               <Box className="form-group">
                   <Typography sx={{color:"#030303", fontWeight:"bold"}}>Department:</Typography>
                   <Select fullWidth name="department" value={department} onChange={(e)=>setDepartment(e.target.value)}>
-                    {/* <MenuItem value={""}></MenuItem>
-                    <MenuItem value={"HR"}>HR</MenuItem>
-                    <MenuItem value={"PS"}>PS</MenuItem> */}
                     {menuItems.map((item, idx)=> <MenuItem key={idx} value={item}>{item}</MenuItem>)}
                   </Select>
               </Box>
               {/* Submission */}
-              <Button variant="contained" onClick={handleSave} sx={{backgroundColor:"green"}}>
-                Save
-              </Button>
+              <PrestyledButton text='SAVE' onClick={handleSave} sx={{backgroundColor:"green"}}/>
           </FormControl>
       </Box>
   );
