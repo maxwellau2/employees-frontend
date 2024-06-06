@@ -1,6 +1,7 @@
 import React from 'react'
 import "./styles/PageHandler.css"
 import { Box, Button, Typography } from '@mui/material';
+import useWindowDimensions from './custom-hooks/GetWindowDimesions';
 
 interface PageHandlerInterface{
     start: number|undefined;
@@ -11,6 +12,10 @@ interface PageHandlerInterface{
 }
 
 const PageHandler = (props:PageHandlerInterface) => {
+
+  const {width, height} = useWindowDimensions()
+  const isMobileView: boolean = (width<600)
+
 
   const [pageState, setPageState] = props.state
 
@@ -30,7 +35,12 @@ const PageHandler = (props:PageHandlerInterface) => {
   return (
     <Box className='apply-flex'>
         {/* Display page number and number of employees */}
+        {
+          !isMobileView? 
         <Typography margin={"auto 0 auto 0"}>Showing <strong>{props.start}</strong> - <strong>{props.end}</strong> out of <strong>{props.totalEntries}</strong> entries</Typography>
+        :
+        <Box/>
+        }
         {/* Previous and Next Buttons */}
         <Box className='apply-flex'>
             <Button sx={{color:"blue",'&:hover': {textDecoration:"underline"}}} disabled={isFirstPage} onClick={dereasePageState}>Previous</Button>
