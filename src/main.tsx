@@ -6,10 +6,15 @@ import { store } from "./store/Store";
 import { Provider } from "react-redux";
 import CreateEmployee from "./page/EmployeeCreationPage/EmployeeCreationPage.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LoginPage from "./page/LoginPage/LoginPage.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <LoginPage />,
+  },
+  {
+    path: "/users",
     element: <App />,
   },
   {

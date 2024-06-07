@@ -81,7 +81,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
       let result = await modifyEmployee(newEmployee);
       if (result.data?.status === "success") {
         alert("Success!");
-        navigate("/");
+        navigate("/users");
         return;
       } else {
         alert(JSON.stringify(result.error));
@@ -91,7 +91,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
       let result = await createNewEmployee(newEmployee);
       if (result.data?.status === "success") {
         alert("Success!");
-        navigate("/");
+        navigate("/users");
         return;
       } else {
         alert(JSON.stringify(result.error));
@@ -107,7 +107,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
       {/* navigate back button */}
       <PrestyledButton
         text="GO BACK"
-        onClick={() => navigate("/")}
+        onClick={() => navigate("/users")}
         sx={{ backgroundColor: "red" }}
       />
       <Typography
