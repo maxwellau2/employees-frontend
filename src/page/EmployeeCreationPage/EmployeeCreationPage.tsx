@@ -62,8 +62,8 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
   const [department, setDepartment] = useState(d ?? "");
   console.log(name, salary, department, id);
 
-  let [createNewEmployee] = useCreateNewEmployeeMutation();
-  let [modifyEmployee] = useModifyEmployeeMutation();
+  const [createNewEmployee] = useCreateNewEmployeeMutation();
+  const [modifyEmployee] = useModifyEmployeeMutation();
   const navigate = useNavigate(); // useNavigate hook for navigation
 
   const handleSave = async () => {
