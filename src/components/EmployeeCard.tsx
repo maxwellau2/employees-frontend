@@ -69,7 +69,7 @@ const EmployeeItem = ({ employee }: { employee: Employee }) => {
           {employee.department}
         </Typography>
         <Typography sx={{ fontSize: "1em", color: "#1c4572" }}>
-          ${employee.salary.toLocaleString()}
+          ${employee.salary.toFixed(2).toLocaleString()}
         </Typography>
       </Box>
       {/* Action buttons */}
