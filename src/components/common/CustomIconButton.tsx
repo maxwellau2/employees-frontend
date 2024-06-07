@@ -1,6 +1,6 @@
 import { Button, SxProps, Theme, IconButton } from '@mui/material';
 import React from 'react';
-import useWindowDimensions from '../custom-hooks/GetWindowDimesions';
+import useWindowDimensions from '../../custom-hooks/GetWindowDimesions';
 
 interface CustomIconButtonProps {
     onClick: (() => Promise<void>) | (() => void),

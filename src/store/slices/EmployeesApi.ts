@@ -7,36 +7,36 @@ export const employeesApi = createApi({
   tagTypes: ['Employees'],
   endpoints: (builder) => ({
     getAllEmployees: builder.query<Employee[], void>({
-      query: () => 'employee',
+      query: () => '/api/employee',
       providesTags: ['Employees']
     }),
     getEmployeeById: builder.query<Employee, number>({
-      query: (id) => `employee/${id}`,
+      query: (id) => `/api/employee/${id}`,
       providesTags: ['Employees']
     }),
     createNewEmployee: builder.mutation<CreateEmployeeResponseTemplate, Employee>({
       query: (employee) => ({
-        url: 'employee',
+        url: '/api/employee',
         method: 'POST',
         body: employee,
       }), invalidatesTags:["Employees"],
     }),
     modifyEmployee: builder.mutation<CreateEmployeeResponseTemplate, Employee>({
       query: (employee) => ({
-        url: `employee/${employee.id}`,
+        url: `/api/employee/${employee.id}`,
         method: 'PUT',
         body: {name:employee.name, department:employee.department, salary:employee.salary},
       }),invalidatesTags:["Employees"],
     }),
     deleteEmployee: builder.mutation<Employee|null, number>({
       query: (id) => ({
-        url: `employee/${id}`,
+        url: `/api/employee/${id}`,
         method: 'DELETE',
       }),invalidatesTags:["Employees"],
     }),
     getEmployeeWindow: builder.query<EmployeeWindowReturn, EmployeeWindow>({
       query: ({ pageNumber, windowSize }) => ({
-        url: 'employees',
+        url: '/api/employees',
         method: 'GET',
         params: { pageNumber, windowSize },
       }), providesTags: ['Employees']
