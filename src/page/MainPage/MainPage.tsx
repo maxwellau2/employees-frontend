@@ -1,8 +1,8 @@
-import EmployeeItem from "../../components/EmployeeCard";
+import EmployeeItem from "../../components/EmployeeCard/EmployeeCard";
 import "./MainPage.css";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import { useGetEmployeeWindowQuery } from "../../store/slices/EmployeesApi";
-import PageHandler from "../../components/PageHandler";
+import PageHandler from "../../components/PageHandler/PageHandler";
 import ShowError from "../../components/ShowError";
 import { useState } from "react";
 import { Box } from "@mui/material";

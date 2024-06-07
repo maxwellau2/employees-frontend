@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Employee } from "../../store/types/Employee";
-import "./CreateEmployee.css";
+import "./EmployeeCreationPage.css";
 import {
   useCreateNewEmployeeMutation,
   useModifyEmployeeMutation,

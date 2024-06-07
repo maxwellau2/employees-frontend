@@ -1,7 +1,7 @@
 import React from "react";
 import "./PageHandler.css";
 import { Box, Button, Typography } from "@mui/material";
-import useWindowDimensions from "../custom-hooks/GetWindowDimesions";
+import useWindowDimensions from "../../custom-hooks/GetWindowDimesions";
 
 interface PageHandlerInterface {
   start: number | undefined;

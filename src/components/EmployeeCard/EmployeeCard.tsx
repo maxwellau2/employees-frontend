@@ -1,8 +1,8 @@
 import React from "react";
-import { Employee } from "../store/types/Employee";
+import { Employee } from "../../store/types/Employee";
 import "./EmployeeCard.css";
 import { useNavigate } from "react-router-dom";
-import { useDeleteEmployeeMutation } from "../store/slices/EmployeesApi";
+import { useDeleteEmployeeMutation } from "../../store/slices/EmployeesApi";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";

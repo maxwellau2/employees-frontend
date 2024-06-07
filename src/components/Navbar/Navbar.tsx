@@ -2,9 +2,9 @@ import ".//Navbar.css";
 import { useNavigate } from "react-router-dom";
 import { Stack, Typography } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import IconButton from "./common/CustomIconButton";
+import IconButton from "../common/CustomIconButton";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import useWindowDimensions from "../custom-hooks/GetWindowDimesions";
+import useWindowDimensions from "../../custom-hooks/GetWindowDimesions";
 
 // interface NavbarProps {
 //     onFilterChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
