@@ -25,6 +25,7 @@ const Navbar = (props: NavbarProps) => {
     }
 
     async function logoutHandler() {
+        if (!confirm("Are you sure you want to log out?")) return;
         const result = await logout(null).unwrap();
         navigate("/");
     }
