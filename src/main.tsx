@@ -7,26 +7,31 @@ import { Provider } from "react-redux";
 import CreateEmployee from "./page/EmployeeCreationPage/EmployeeCreationPage.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./page/LoginPage/LoginPage.tsx";
+import SignupPage from "./page/SignupPage/SignupPage.tsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LoginPage />,
-  },
-  {
-    path: "/users",
-    element: <App />,
-  },
-  {
-    path: "/CreateNewEmployee",
-    element: <CreateEmployee />,
-  },
+    {
+        path: "/",
+        element: <LoginPage />,
+    },
+    {
+        path: "/signup",
+        element: <SignupPage />,
+    },
+    {
+        path: "/users",
+        element: <App />,
+    },
+    {
+        path: "/CreateNewEmployee",
+        element: <CreateEmployee />,
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <Provider store={store}>
+            <RouterProvider router={router} />
+        </Provider>
+    </React.StrictMode>
 );

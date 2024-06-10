@@ -1,10 +1,11 @@
 import ".//Navbar.css";
 import { useNavigate } from "react-router-dom";
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CustomIconButton from "../common/CustomIconButton";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import useWindowDimensions from "../../custom-hooks/GetWindowDimesions";
+import { usePostUserLogoutMutation } from "../../store/slices/EmployeesApi";
 
 interface NavbarProps {
     disabled: boolean;
@@ -12,9 +13,7 @@ interface NavbarProps {
 
 const Navbar = (props: NavbarProps) => {
     const navigate = useNavigate();
-    // function onFilterChange(){
-    //     return;
-    // }
+    const [logout] = usePostUserLogoutMutation();
     const { width } = useWindowDimensions();
     const isMobileView: boolean = width < 600;
 
@@ -24,10 +23,18 @@ const Navbar = (props: NavbarProps) => {
         });
         return;
     }
+
+    async function logoutHandler() {
+        const result = await logout(null).unwrap();
+        navigate("/");
+    }
     return (
         <Stack direction={"row"} className="navbar">
             {" "}
             {/* top blue bar, row stack */}
+            <Button color="warning" variant="contained" onClick={logoutHandler}>
+                Logout
+            </Button>
             <Typography
                 variant="h4"
                 sx={{ fontWeight: "bold" }}
