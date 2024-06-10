@@ -9,9 +9,8 @@ import {
     MenuItem,
 } from "@mui/material";
 import { PasswordValidationResult, validatePassword } from "./utils";
-import { usePostUserSignupMutation } from "../../store/slices/EmployeesApi";
+import { usePostUserSignupMutation } from "../../store/slices/UsersApi";
 import { useNavigate } from "react-router-dom";
-import bcrypt from "bcryptjs";
 
 const SignupPage = () => {
     // the usual use state for passwords and usernames

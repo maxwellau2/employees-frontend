@@ -2,23 +2,27 @@ import { Box, Stack } from "@mui/material";
 import { FormControl, TextField, Typography, Button } from "@mui/material";
 import "./LoginPage.css";
 import { useState } from "react";
-import { usePostUserLoginMutation } from "../../store/slices/EmployeesApi";
+import { usePostUserLoginMutation } from "../../store/slices/UsersApi";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { employeesApi } from "../../store/slices/EmployeesApi";
 
 const LoginPage = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [login] = usePostUserLoginMutation();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     async function handleLogin() {
         const result = await login({ username: username, password: password });
         if (result.data?.status === "success") {
-            alert("sucessfully logged in!");
+            // alert("sucessfully logged in!");
+            dispatch(employeesApi.util.invalidateTags(["Employees"])); // invalidate tag to update users screen
             navigate("/users");
             return;
         }
-        alert("lolol");
+        alert("catastrophic failure");
     }
 
     async function redirectSignup() {

@@ -5,7 +5,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CustomIconButton from "../common/CustomIconButton";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import useWindowDimensions from "../../custom-hooks/GetWindowDimesions";
-import { usePostUserLogoutMutation } from "../../store/slices/EmployeesApi";
+import { usePostUserLogoutMutation } from "../../store/slices/UsersApi";
 
 interface NavbarProps {
     disabled: boolean;

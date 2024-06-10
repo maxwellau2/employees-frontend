@@ -4,15 +4,7 @@ import {
     EmployeeWindow,
     CreateEmployeeResponseTemplate,
     EmployeeWindowReturn,
-    TimeoutReturn,
 } from "../types/Employee";
-import {
-    LoginInterface,
-    LoginInterfaceReturn,
-    LogoutInterfaceReturn,
-    SignupInterface,
-    SignupInterfaceReturn,
-} from "../types/User";
 
 export const employeesApi = createApi({
     reducerPath: "employeesApi",
@@ -72,29 +64,6 @@ export const employeesApi = createApi({
             }),
             providesTags: ["Employees"],
         }),
-        postUserLogin: builder.mutation<LoginInterfaceReturn, LoginInterface>({
-            query: ({ username, password }) => ({
-                url: "/users/login",
-                method: "POST",
-                body: { username, password },
-            }),
-        }),
-        postUserSignup: builder.mutation<
-            SignupInterfaceReturn,
-            SignupInterface
-        >({
-            query: ({ username, password, departmentId }) => ({
-                url: "users/signup",
-                method: "POST",
-                body: { username, password, departmentId },
-            }),
-        }),
-        postUserLogout: builder.mutation<LogoutInterfaceReturn, null>({
-            query: () => ({
-                url: "users/logout",
-                method: "POST",
-            }),
-        }),
     }),
 });
 
@@ -106,7 +75,4 @@ export const {
     useModifyEmployeeMutation,
     useDeleteEmployeeMutation,
     useGetEmployeeWindowQuery,
-    usePostUserLoginMutation,
-    usePostUserSignupMutation,
-    usePostUserLogoutMutation,
 } = employeesApi;
