@@ -34,8 +34,10 @@ const MainPage = () => {
     });
 
     useEffect(() => {
-        if (employees?.employees.length == 0 && pageState != 0) {
-            setPageState(pageState - 1);
+        if (employees) {
+            if (employees!.employees.length == 0 && pageState != 0) {
+                setPageState(pageState - 1);
+            }
         }
     }, [employees]);
 
@@ -53,11 +55,11 @@ const MainPage = () => {
                             errorMessage="oops, somthing went wrong"
                         />
                     ) : (
-                        employees!.employees?.map((emp, idx) => (
+                        employees!.employees.map((emp, idx) => (
                             <EmployeeItem employee={emp} key={idx} />
                         ))
                     )}
-                    {employees!.employees.length == 0 && (
+                    {employees?.employees.length == 0 && (
                         <ShowError
                             error={null}
                             errorMessage="No employees found, create an Employee!"
