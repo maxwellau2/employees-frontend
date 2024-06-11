@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { useGetEmployeeWindowQuery } from "../../store/slices/EmployeesApi";
 import PageHandler from "../../components/PageHandler/PageHandler";
 import ShowError from "../../components/ShowError";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { SerializedError } from "@reduxjs/toolkit";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/query";
@@ -33,6 +33,12 @@ const MainPage = () => {
         windowSize: window_size,
     });
 
+    useEffect(() => {
+        if (employees?.employees.length == 0 && pageState != 0) {
+            setPageState(pageState - 1);
+        }
+    }, [employees]);
+
     if (isLoading) return <Box>Loading...</Box>;
     // if (error) return <Box>Error: {String(error)}</Box>;
     console.log(employees);
@@ -51,7 +57,7 @@ const MainPage = () => {
                             <EmployeeItem employee={emp} key={idx} />
                         ))
                     )}
-                    {employees?.employees.length == 0 && (
+                    {employees!.employees.length == 0 && (
                         <ShowError
                             error={null}
                             errorMessage="No employees found, create an Employee!"
